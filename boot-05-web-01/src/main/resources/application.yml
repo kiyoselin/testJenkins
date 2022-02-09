@@ -1,0 +1,24 @@
+spring:
+#  mvc:
+#    static-path-pattern: "/resources/**"
+    #当前项目加上static-path-pattern+静态资源名 = 静态资源文件夹下找，这个会导致 Favicon 功能失效
+#
+  web:
+    resources:
+      static-locations: [classpath:/haha/]
+#      这里的haha覆盖了原有的static等默认目录，但是META/resources/下的资源依然可以访问到。
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true #开启页面表单的rest功能
+    contentnegotiation:
+      favor-parameter: true #开启参数请求内容协商模式
+#      发请求： http://localhost:8080/test/person?format=json
+#              http://localhost:8080/test/person?format=xml
+
+
+server:
+  servlet:
+    context-path: /world
+    #从这以后，项目的访问路径必须以/world开始：http://localhost:8080/world/test
+
